@@ -1,6 +1,6 @@
 <header class="mb-4">
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-        <a class="navbar-brand" href="/">一覧</a>
+        <a class="navbar-brand" href="/">タスク一覧</a>
          
         <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#nav-bar">
             <span class="navbar-toggler-icon"></span>
@@ -9,9 +9,16 @@
         <div class="collapse navbar-collapse" id="nav-bar">
             <ul class="navbar-nav mr-auto"></ul>
             <ul class="navbar-nav">
-                <li class="nav-item">{!! link_to_route('signup.get', 'Signup', [], ['class' => 'nav-link']) !!}</li>
-                    <li class="nav-item"><a href="#" class="nav-link">Login</a></li>
-                <li class="nav-item">{!! link_to_route('tasks.create', '作成ページ', [], ['class' => 'nav-link']) !!}</li>
+                @if (Auth::check())
+                    <li class="nav-item dropdown">
+                            <li class="nav-item">{!! link_to_route('tasks.create', '作成ページ', [], ['class' => 'nav-link']) !!}</li>
+                            <li class="dropdown-divider"></li>
+                            <li class="dropdown-item">{!! link_to_route('logout.get', 'Logout') !!}</li>
+                    </li>
+                 @else
+                    <li class="nav-item">{!! link_to_route('signup.get', 'Signup', [], ['class' => 'nav-link']) !!}</li>
+                    <li class="nav-item">{!! link_to_route('login', 'Login', [], ['class' => 'nav-link']) !!}</li>
+                @endif
             </ul>
         </div>
     </nav>

@@ -10,7 +10,7 @@
         </ul>
     @endif
 
-        <h1>タスク新規作成ページ</h1>
+        <h1>新規タスクの投稿</h1>
 
     <div class="row">
         <div class="col-6">
