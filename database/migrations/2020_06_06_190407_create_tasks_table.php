@@ -16,12 +16,9 @@ class CreateTasklistTable extends Migration
         Schema::create('tasks', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned()->index();
-            $table->string('content');    // content カラム追加
+            $table->string('content');    
             $table->timestamps();
             
-            // 外部キー制約
-            // foreign('user_id'): user_idカラムは
-            // references('id')->on('users')：usersテーブルのidカラムに存在している値であるという条件を付与
             $table->foreign('user_id')->references('id')->on('users');
         });
     }
